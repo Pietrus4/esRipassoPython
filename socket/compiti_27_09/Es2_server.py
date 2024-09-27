@@ -2,7 +2,7 @@ import socket
 
 server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server_socket.bind(('localhost', 12345))
-server_socket.listen(1)
+server_socket.listen(1) #dimensione coda connessioni con client
 BUFFER_SIZE = 4092
 
 client_socket, client_address = server_socket.accept()
