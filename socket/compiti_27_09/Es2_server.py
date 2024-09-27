@@ -3,7 +3,7 @@ import socket
 server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server_socket.bind(('localhost', 12345))
 server_socket.listen(1)
-print("Server in ascolto su localhost:12345")
+BUFFER_SIZE = 4092
 
 client_socket, client_address = server_socket.accept()
 print(f"Connessione stabilita con: {client_address}")
@@ -11,7 +11,7 @@ print(f"Connessione stabilita con: {client_address}")
 while True:
     # Ricezione messaggio dal client
     try:
-        message = client_socket.recv(1024).decode('utf-8')
+        message = client_socket.recv(BUFFER_SIZE).decode('utf-8')
         if not message:
             print("Il client si è disconnesso")
             break

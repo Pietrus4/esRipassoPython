@@ -2,7 +2,7 @@ import socket
 
 client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 client_socket.connect(('localhost', 12345))
-print("Connessione stabilita con il server")
+BUFFER_SIZE = 4092
 
 while True:
     # Invio messaggio al server
@@ -15,7 +15,7 @@ while True:
 
     # Ricezione messaggio dal server
     try:
-        message = client_socket.recv(1024).decode('utf-8')
+        message = client_socket.recv(BUFFER_SIZE).decode('utf-8')
         if not message:
             print("Il server si è disconnesso")
             break
